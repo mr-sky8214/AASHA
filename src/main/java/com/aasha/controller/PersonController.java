@@ -2,6 +2,8 @@ package com.aasha.controller;
 
 import com.aasha.model.Person;
 import com.aasha.service.PersonService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +30,7 @@ public class PersonController {
     }
 
     @PostMapping("/create")
-    public Person createPerson(@RequestBody Person person) {
+    public Person createPerson(@Valid @NotNull @RequestBody Person person) {
         return personService.storePerson(person);
     }
 }
